@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agro News Portal - AI-Powered Farming Updates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-seedling"></i>
+                <span>Smart Agro Portal</span>
+            </div>
+            <div class="nav-controls">
+                <select id="languageSelect" class="lang-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="te">తెలుగు</option>
+                </select>
+                <button id="locationBtn" class="location-btn">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span data-lang="detect">Detect Location</span>
+                </button>
+                <button id="smsBtn" class="sms-btn">
+                    <i class="fas fa-sms"></i>
+                    <span data-lang="getAlerts">SMS Alerts</span>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Farmer Profile Card -->
+    <div class="profile-card" id="profileCard">
+        <div class="profile-content">
+            <h3 data-lang="welcome">Welcome, Farmer!</h3>
+            <div class="farmer-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="locationText">Detecting location...</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-seedling"></i>
+                    <span id="cropType">Rice</span>
+                </div>
+                <select id="cropSelect">
+                    <option value="rice">Rice</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="maize">Maize</option>
+                    <option value="cotton">Cotton</option>
+                    <option value="sugarcane">Sugarcane</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Weather Card -->
+        <div class="card weather-card" id="weatherCard">
+            <div class="card-header">
+                <i class="fas fa-cloud-sun"></i>
+                <h3 data-lang="weather">Weather Forecast</h3>
+            </div>
+            <div class="weather-content">
+                <div class="current-weather">
+                    <div class="temp-display">
+                        <span id="currentTemp">--°C</span>
+                        <span id="weatherDesc">Loading...</span>
+                    </div>
+                    <div class="weather-icon">
+                        <i id="weatherIcon" class="fas fa-spinner fa-spin"></i>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span>Humidity</span>
+                        <span id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Wind</span>
+                        <span id="wind">-- km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Rain</span>
+                        <span id="rain">--%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Prices Card -->
+        <div class="card market-card" id="marketCard">
+            <div class="card-header">
+                <i class="fas fa-chart-line"></i>
+                <h3 data-lang="marketPrices">Market Prices</h3>
+            </div>
+            <div class="market-content">
+                <div class="price-item" id="priceRice">
+                    <span class="crop-name">Rice</span>
+                    <span class="price">₹--/Quintal</span>
+                    <span class="trend up"><i class="fas fa-arrow-up"></i> +2%</span>
+                </div>
+                <div class="price-item" id="priceWheat">
+                    <span class="crop-name">Wheat</span>
+                    <span class="price">₹--/Quintal</span>
+                    <span class="trend down"><i class="fas fa-arrow-down"></i> -1%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- News & Alerts Card -->
+        <div class="card news-card" id="newsCard">
+            <div class="card-header">
+                <i class="fas fa-newspaper"></i>
+                <h3 data-lang="latestNews">Latest News & Alerts</h3>
+            </div>
+            <div class="news-content" id="newsContent">
+                <div class="news-item skeleton">
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text small"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schemes & Subsidies -->
+        <div class="card schemes-card" id="schemesCard">
+            <div class="card-header">
+                <i class="fas fa-gift"></i>
+                <h3 data-lang="govtSchemes">Government Schemes</h3>
+            </div>
+            <div class="schemes-content">
+                <div class="scheme-item">
+                    <h4>PM Kisan Samman Nidhi</h4>
+                    <p data-lang="pmkisan">₹6000/year direct benefit</p>
+                    <a href="#" class="apply-btn" data-lang="applyNow">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pest Alerts -->
+        <div class="card pest-card" id="pestCard">
+            <div class="card-header">
+                <i class="fas fa-bug"></i>
+                <h3 data-lang="pestAlerts">Pest Alerts</h3>
+            </div>
+            <div class="pest-content">
+                <div class="alert-item high">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Rice Stem Borer detected nearby</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <h2 data-lang="community">Farmer Community</h2>
+            <div class="community-grid">
+                <div class="community-card">
+                    <i class="fas fa-comments"></i>
+                    <h3 data-lang="discuss">Discuss Crops</h3>
+                    <p data-lang="shareExp">Share experiences with other farmers</p>
+                </div>
+                <div class="community-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3 data-lang="expertAdvice">Expert Advice</h3>
+                    <p data-lang="askExperts">Ask agriculture experts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMS Modal -->
+    <div class="modal" id="smsModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 data-lang="smsAlerts">Get SMS Alerts</h3>
+            <p data-lang="enterNumber">Enter your mobile number to receive daily updates:</p>
+            <input type="tel" id="phoneInput" placeholder="98XXXXXXXX">
+            <button id="subscribeBtn" class="primary-btn">Subscribe</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Smart Agro Portal. Empowering Farmers with AI Technology.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+</body>
+</html>
